@@ -8,7 +8,11 @@ fun main() {
     println(result)
 }
 
-inline fun funWithLambda(value: Int, action: (Int) -> Int): Int {
+inline fun funWithLambda(value: Int, action: (Int) -> Int) {
     println("Passed value: $value")
-    return action(value)
+    resultProcessor { action(value) }
+}
+
+fun resultProcessor(block: () -> Int) {
+    println("Result: ${block()}")
 }
