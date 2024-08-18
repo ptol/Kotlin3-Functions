@@ -1,6 +1,7 @@
 package ru.otus.homework
 
 import java.time.LocalDate
+import kotlin.math.roundToInt
 
 fun main() {
     println(calculate(10, 20))
@@ -19,6 +20,11 @@ fun main() {
     translate(calculate(1.1F, 2.2F, 3.3F)) {
         "In english: ${it.replace("+", "plus").replace("=", "equals")}"
     }
+    println(
+        calculate(1.1F, 2.2F, 3.3F) {
+            times(10).roundToInt().div(10F).toString()
+        }
+    )
     println(
         calculate(1.1F, 2.2F, 3.3F) {
             "%.4f (с точностью до четырех знаков)".format(this)
