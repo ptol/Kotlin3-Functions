@@ -14,10 +14,19 @@ fun main() {
     val sv: String = getValue(Box("String"))
     println(iv)
     println(sv)
+
+    val iv2: Int? = checkType(Box(1))
+    val sv2: String? = checkType(Box("String"))
+    println(iv2)
+    println(sv2)
 }
 
 class Box<T>(val value: T)
 
 fun <T> getValue(box: Box<T>): T {
     return box.value
+}
+
+fun <T> checkType(box: Box<*>): T? {
+    return if(box.value is T) box.value else null
 }
