@@ -15,8 +15,8 @@ fun main() {
     println(iv)
     println(sv)
 
-    val iv2: Int? = checkType(Box(1))
-    val sv2: String? = checkType(Box("String"))
+    val iv2: Int? = checkType(Box(1), Int::class.java)
+    val sv2: String? = checkType(Box("String"), String::class.java)
     println(iv2)
     println(sv2)
 }
@@ -27,6 +27,7 @@ fun <T> getValue(box: Box<T>): T {
     return box.value
 }
 
-fun <T> checkType(box: Box<*>): T? {
-    return if(box.value is T) box.value else null
+@Suppress("UNCHECKED_CAST")
+fun <T> checkType(box: Box<*>, t: Class<T>): T? {
+    return if(t.isInstance(box.value)) (box.value as T) else null
 }
