@@ -1,11 +1,11 @@
 package ru.otus.homework
 
 fun main() {
-    println(abs(increment(increment(decrement(increment(decrement(SomeValue(1))))))))
+    println(SomeValue(1).decrement().increment().decrement().increment().increment().abs())
 }
 
 data class SomeValue(val value: Int = 0)
 
-fun increment(someValue: SomeValue): SomeValue = someValue.copy(value = someValue.value + 1)
-fun decrement(someValue: SomeValue): SomeValue = someValue.copy(value = someValue.value - 1)
-fun abs(someValue: SomeValue): SomeValue = someValue.copy(value = kotlin.math.abs(someValue.value))
+fun SomeValue.increment(): SomeValue = copy(value = value + 1)
+fun SomeValue.decrement(): SomeValue = copy(value = value - 1)
+fun SomeValue.abs(): SomeValue = copy(value = kotlin.math.abs(value))
