@@ -3,7 +3,7 @@ package ru.otus.homework
 fun main() {
     val a = 5
     val result = funWithLambda(10) {
-        it * a
+        return
     }
     println(result)
 }
