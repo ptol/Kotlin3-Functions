@@ -10,7 +10,7 @@ fun main() {
     println(result)
 }
 
-inline fun funWithLambda(value: Int, crossinline action: (Int) -> Int, onError: (Throwable) -> String) {
+inline fun funWithLambda(value: Int, crossinline action: (Int) -> Int, noinline onError: (Throwable) -> String) {
     println("Passed value: $value")
     try {
         resultProcessor { action(value) }
